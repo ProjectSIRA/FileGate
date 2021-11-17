@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FileGate": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "FILEGATE_CODE": "abc123"
+      }
+    }
+  }
+}

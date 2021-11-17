@@ -11,8 +11,15 @@ namespace FileGate
         [RestRoute("Get", "/gate")]
         public async Task Gate(IHttpContext context)
         {
+            if (!context.Request.QueryString.HasKeys() || context.Request.QueryString["code"] == null)
+            {
+                await context.Response.SendResponseAsync(HttpStatusCode.BadRequest);
+                return;
+            }
+
             _ = _gateCode;
-            await context.Response.SendResponseAsync("Success");
+            string code = context.Request.QueryString["code"];
+            await context.Response.SendResponseAsync(code);
         }
     }
 }

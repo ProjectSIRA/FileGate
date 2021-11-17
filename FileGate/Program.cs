@@ -15,7 +15,9 @@ namespace FileGate
                 return;
             }
 
-            using IRestServer server = RestServerBuilder.UseDefaults().Build();
+            var def = RestServerBuilder.UseDefaults();
+            def.ConfigureServer = (ctx) => ctx.Prefixes.Add("http://127.0.0.1:3000/");
+            using IRestServer server = def.Build();
             server.Start();
 
             Console.CancelKeyPress += Console_CancelKeyPress;

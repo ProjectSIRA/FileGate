@@ -16,7 +16,7 @@ namespace FileGate
             }
 
             var def = RestServerBuilder.UseDefaults();
-            def.ConfigureServer = (ctx) => ctx.Prefixes.Add("http://127.0.0.1:3000/");
+            def.ConfigureServer = (ctx) => ctx.Prefixes.Add("http://*:3107/");
             using IRestServer server = def.Build();
             server.Start();
 
